@@ -1,0 +1,29 @@
+<h1>My To do's</h1>
+<div class="container">
+    <table>
+        <thead>
+            <tr>
+                <th>Description</th>
+                <th>Target Date</th>
+                <th>is Completed</th>
+                <th>Update</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let toDo of toDos">
+                <td>{{toDo.description}}</td>
+                <td>{{toDo.targetDate | date | lowercase}}</td>
+                <td>{{toDo.done}}</td>
+                <td><button (click)="updateToDo(toDo.id)" class="btn btn-success">Update</button></td>
+                <td><button (click)="deleteToDo(toDo.id)" class="btn btn-warning">Delete</button></td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="row">
+        <button (click)="addToDo()" class="btn btn-success">Add</button>
+    </div>
+    <div class="container" *ngIf="messageRemoved!=''">
+        <h2 class="alert alert-success">{{messageRemoved}}</h2>
+     </div>
+</div>
