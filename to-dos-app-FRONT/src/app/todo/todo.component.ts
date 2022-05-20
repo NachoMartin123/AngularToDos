@@ -21,12 +21,13 @@ export class TodoComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    //get parm from URL
     this.id = this.route.snapshot.params["id"]
    
     this.toDo = new ToDo(this.id, "", false, new Date())
 
     if(this.id!=-1){
-      this.toDoService.retrieveToDo("hola", this.id).subscribe(
+      this.toDoService.retrieveToDo("in28minutes", this.id).subscribe(
         data => this.toDo = data
       )
     }
@@ -35,7 +36,7 @@ export class TodoComponent implements OnInit {
   saveToDo(){
     if(this.id == -1){
         //create ToDo
-        this.toDoService.createToDo("hola", this.toDo).subscribe(
+        this.toDoService.createToDo("in28minutes", this.toDo).subscribe(
             data => {
                 console.log(data);
                 this.router.navigate(["toDos"])
@@ -43,7 +44,7 @@ export class TodoComponent implements OnInit {
         )
     }else{
         //update if exists
-        this.toDoService.updateToDo("hola", this.id, this.toDo).subscribe(
+        this.toDoService.updateToDo("in28minutes", this.id, this.toDo).subscribe(
             data => {
                 console.log(data);
                 this.router.navigate(["toDos"])

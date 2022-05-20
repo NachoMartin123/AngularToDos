@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  username = "hola"
+  username = "in28minutes"
   password = ""
   errorMessage ="Invalid credentials"
   invalidLogin = false

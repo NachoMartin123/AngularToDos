@@ -21,7 +21,7 @@ export class ListToDosComponent implements OnInit {
   messageRemoved:string=""
 
   constructor(
-    private ToDoDataService:ToDoDataService,
+    private toDoDataService:ToDoDataService,
     private router: Router,
     ) { }
 
@@ -30,12 +30,12 @@ export class ListToDosComponent implements OnInit {
   }
 
   deleteToDo(id:number){
-    this.ToDoDataService.deleteToDo("hola",id).subscribe(
+    this.toDoDataService.deleteToDo("in28minutes",id).subscribe(
       response => {
-        this.messageRemoved = `delete of ToDo ${id} successfull`
-        this.refreshToDos()
+        this.messageRemoved = `delete of ToDo ${id} successfull`;
+        this.refreshToDos();
       }
-    )
+    );
   }
 
   updateToDo(id:number){
@@ -44,7 +44,7 @@ export class ListToDosComponent implements OnInit {
   }
 
   refreshToDos(){
-    this.ToDoDataService.retrieveAllToDos("hola").subscribe(
+    this.toDoDataService.retrieveAllToDos("in28minutes").subscribe(
       response => {
           this.toDos = response;
           console.log(this.toDos);

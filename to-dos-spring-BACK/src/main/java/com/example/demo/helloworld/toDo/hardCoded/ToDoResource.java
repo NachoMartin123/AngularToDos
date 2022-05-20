@@ -1,4 +1,4 @@
-package com.example.demo.helloworld.toDo;
+package com.example.demo.helloworld.toDo.hardCoded;
 
 import java.net.URI;
 import java.util.List;
@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+
+import com.example.demo.helloworld.toDo.ToDo;
 
 @CrossOrigin(origins="http://localhost:4200")
 @RestController

@@ -1,4 +1,4 @@
-package com.example.demo.helloworld.toDo;
+package com.example.demo.helloworld.toDo.hardCoded;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -7,17 +7,19 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.example.demo.helloworld.toDo.ToDo;
+
 @Service
 public class ToDoHardcodedService {
 	
-	private static List<ToDo> toDos = new ArrayList();
+	private static List<ToDo> toDos = new ArrayList<ToDo>();
 	private static Long idCounter=(long) 0;
 	
 	
 	static {
-		toDos.add(new ToDo(++idCounter, "hola", "Learn to dance", new Date(), false));
-		toDos.add(new ToDo(++idCounter, "hola", "Learn Microservices", new Date(), false));
-		toDos.add(new ToDo(++idCounter, "hola", "Go to supermarket", new Date(), false));
+		toDos.add(new ToDo(++idCounter, "in28minutes", "Learn to dance", new Date(), false));
+		toDos.add(new ToDo(++idCounter, "in28minutes", "Learn Microservices", new Date(), false));
+		toDos.add(new ToDo(++idCounter, "in28minutes", "Go to supermarket", new Date(), false));
 	}
 	
 	public List<ToDo> findAll(){
