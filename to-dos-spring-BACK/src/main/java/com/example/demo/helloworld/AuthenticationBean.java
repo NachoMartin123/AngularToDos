@@ -1,12 +1,10 @@
 package com.example.demo.helloworld;
 
-public class HelloWorldBean {
+public class AuthenticationBean {
 	
 	private String message;
 	
-	
-
-	public HelloWorldBean(String message) {
+	public AuthenticationBean(String message) {
 		super();
 		this.message = message;
 	}
@@ -18,7 +16,4 @@ public class HelloWorldBean {
 	public void setMessage(String message) {
 		this.message = message;
 	}
-	
-
-
 }
