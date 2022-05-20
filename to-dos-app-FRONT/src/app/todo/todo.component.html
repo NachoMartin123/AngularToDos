@@ -1,21 +1,29 @@
 <h1>To Do</h1>
-<div class="container">
+<div class="container"><!-- dirty == something changed in the form, at least 1 element -->
+    <div class="alert alert-warning" *ngIf="todoForm.invalid && todoForm.dirty">Enter valid values</div>
+    <div class="alert alert-warning" *ngIf="targetDate.invalid && todoForm.dirty">Enter valid targetDate</div>
+    <div class="alert alert-warning" *ngIf="description.invalid && todoForm.dirty">Enter valid description</div>
+    
+    <form #todoForm="ngForm" (ngSubmit)="!todoForm.invalid && saveToDo()">
+        <fieldset class="form-group">
+            <label>Description</label>
+            <input type="text"  #description="ngModel" 
+                [(ngModel)]="toDo.description" 
+                class="form-control" 
+                name="description" 
+                required="required"> 
+        </fieldset>
 
-    <fieldset class="form-group">
-        <label>Description</label>
-        <input type="text" [(ngModel)]="toDo.description" class="form-control" name="description" required="required"> 
-    </fieldset>
+        <fieldset class="form-group">
+            <label>Target Date</label>
+            <input type="date" #targetDate="ngModel"
+                [ngModel]="toDo.targetDate | date:'yyyy-MM-dd'" 
+                (ngModelChange)="toDo.targetDate = $event"
+                class="form-control" 
+                name="targetDate" 
+                required="required"> <!-- change format of targetDate -->
+        </fieldset>
 
-    <fieldset class="form-group">
-        <label>Target Date</label>
-        <input type="date" 
-            [ngModel]="toDo.targetDate | date:'yyyy-MM-dd'" 
-            (ngModelChange)="toDo.targetDate = $event"
-            class="form-control" 
-            name="targetDate" 
-            required="required"> <!-- change format of targetDate -->
-    </fieldset>
-
-    <button class="btn btn-success" (click)="saveToDo()">Save</button>
-
+        <button type="submit" class="btn btn-success">Save</button>
+    </form>
 </div>

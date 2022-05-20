@@ -33,7 +33,7 @@ export class TodoComponent implements OnInit {
   }
 
   saveToDo(){
-    if(this.id === -1){
+    if(this.id == -1){
         //create ToDo
         this.toDoService.createToDo("hola", this.toDo).subscribe(
             data => {
