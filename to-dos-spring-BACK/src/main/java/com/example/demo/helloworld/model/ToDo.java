@@ -1,4 +1,4 @@
-package com.example.demo.helloworld.toDo;
+package com.example.demo.helloworld.model;
 
 import java.util.Date;
 import java.util.Objects;
@@ -6,15 +6,16 @@ import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class ToDo {
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id; 
-	@Column
-	private String username;
 	@Column
 	private String description;
 	@Column
@@ -22,29 +23,36 @@ public class ToDo {
 	@Column
 	private boolean isDone;
 	
-	protected ToDo() {}
-		
-	public ToDo(Long id, String username, String description, Date targetDate, 
-			boolean isDone) {
+	@ManyToOne
+	@JoinColumn(name = "user_id")
+    private User user;
+	
+	
+	public ToDo() {}
+	
+	public ToDo(Long id, String description, Date targetDate, boolean isDone, User user) {
 		super();
 		this.id = id;
-		this.username = username;
+		this.description = description;
+		this.targetDate = targetDate;
+		this.isDone = isDone;
+		this.user = user;
+	}
+	
+	
+
+	public ToDo(String description, Date targetDate, boolean isDone) {
+		super();
 		this.description = description;
 		this.targetDate = targetDate;
 		this.isDone = isDone;
 	}
-	
+
 	public Long getId() {
 		return id;
 	}
 	public void setId(Long id) {
 		this.id = id;
-	}
-	public String getUsername() {
-		return username;
-	}
-	public void setUsername(String username) {
-		this.username = username;
 	}
 	public String getDescription() {
 		return description;
@@ -63,6 +71,12 @@ public class ToDo {
 	}
 	public void setDone(boolean isDone) {
 		this.isDone = isDone;
+	}
+	public User getUser() {
+		return user;
+	}
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 	@Override

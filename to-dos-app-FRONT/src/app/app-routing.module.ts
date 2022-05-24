@@ -1,3 +1,4 @@
+import { PortadaComponent } from './portada/portada.component';
 import { TodoComponent } from './todo/todo.component';
 import { RouteGuardService } from './service/route-guard.service';
 import { LogoutComponent } from './logout/logout.component';
@@ -12,6 +13,7 @@ import { RouterModule, Routes } from '@angular/router';
 //1 - add object to Routes
 const routes: Routes = [
 	{path: "login", component: LoginComponent},
+	{path: "", component: PortadaComponent},
 	//url disponible si cumple la condicion de canActivate
 	{path: "welcome/:name", component: WelcomeComponent, canActivate:[RouteGuardService]},
 	{path: "toDos", component: ListToDosComponent, canActivate:[RouteGuardService]},
